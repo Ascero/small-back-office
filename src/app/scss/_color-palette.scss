@@ -1,0 +1,62 @@
+$black: #000;
+$white: #fff;
+
+$primary: (
+  color: #3f51b5,
+  100: #c5cbe9,
+  200: #9fa8da,
+  300: #7985cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  A100: #c6cbff,
+  A200: #939dff,
+  A400: #606eff,
+  A700: #4757ff,
+  contrast: (
+    color: $white,
+  )
+);
+
+$primary-accent: (
+  color: #232636,
+  100: #bdbec3,
+  200: #91939b,
+  300: #656772,
+  400: #444754,
+  500: #232636,
+  A100: #5971ff,
+  A200: #2645ff,
+  A400: #0023f2,
+  A700: #001fd9,
+  contrast: (
+    color:  $white,
+  )
+);
+
+$success: (
+  color: #93c074,
+  contrast: (
+    color:  $white,
+  )
+);
+
+$warn: (
+  color: #ff9966,
+  contrast: (
+    color: $white,
+  )
+);
+
+$error: (
+  color: #d23b45,
+  contrast: (
+    color: $white,
+  )
+);
+
+$info: (
+  color: #439bdf,
+  contrast: (
+    color: $white,
+  )
+);
