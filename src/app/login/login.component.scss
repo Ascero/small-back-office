@@ -1,0 +1,40 @@
+@import "../../app/scss/variables";
+
+.login-section {
+  background: map-get($primary-accent, color);
+  display: flex;
+  flex-direction: column;
+  margin: 9.375rem auto;
+  max-width: 21.875rem;
+  padding: 2rem;
+  transition: 1s;
+  animation: slide 1.5s;
+
+  h1 {
+    color: map-get($primary, color);
+    font-weight: bold;
+  }
+
+  .contact-form {
+    width: 100%;
+
+    .user-data {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
+  @include media-max-width(xs) {
+    max-width: 85%;
+  }
+
+  @keyframes slide {
+    0% {
+      margin: -18.75rem auto;
+    }
+  }
+}

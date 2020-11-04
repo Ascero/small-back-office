@@ -1,0 +1,44 @@
+<mat-card class="login-section">
+  <h1>Login to your account</h1>
+  <form class="contact-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="user-data">
+      <mat-form-field color="primary" appearance="fill">
+        <input
+          formControlName="username"
+          matInput
+          required
+          type="text"
+        />
+        <mat-label>Username</mat-label>
+        <mat-hint align="end">Fill with your username.</mat-hint>
+        <mat-error> Your username is required. </mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary" appearance="fill">
+        <input
+          color="primary"
+          formControlName="password"
+          matInput
+          required
+          type="password"
+        />
+        <mat-label>Password</mat-label>
+        <mat-hint align="end">Please fill with you password.</mat-hint>
+        <mat-error> Your company name is required. </mat-error>
+      </mat-form-field>
+    </div>
+    <button
+      class="btn-block"
+      color="primary"
+      mat-raised-button
+      [disabled]="loading"
+    >
+      <span *ngIf="!loading; else loader">Submit</span>
+    </button>
+  </form>
+</mat-card>
+<ng-template #loader>
+  <span class="loader">
+    <mat-spinner diameter="32"></mat-spinner>
+  </span>
+</ng-template>
+
