@@ -2,7 +2,7 @@
 
 html,
 body {
-  height: 100%;
+  background: map-get($primary, color);
 }
 body {
   margin: 0;

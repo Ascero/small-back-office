@@ -1,5 +1,5 @@
-@import '~@angular/material/theming';
-@import './variables.scss';
+@import "~@angular/material/theming";
+@import "./variables";
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -7,3 +7,10 @@
 @include mat-core();
 
 @include angular-material-theme($small-back-office-theme);
+
+/*
+ * Global Material components
+ */
+ @import './button'; // Button styles
+ @import './form-fields'; // Form Fields styles
+ @import './sidenav'; // Sidenav styles

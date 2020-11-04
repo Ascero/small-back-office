@@ -1,0 +1,15 @@
+button {
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+
+  span {
+    color: $white;
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+  }
+}

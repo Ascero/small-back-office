@@ -1,0 +1,16 @@
+@import "../color-palette";
+
+$small-back-office-primary: mat-palette($primary);
+$small-back-office-accent: mat-palette($primary-accent);
+
+$small-back-office-warn: mat-palette($warn);
+
+$small-back-office-theme: mat-light-theme(
+  (
+    color: (
+      primary: $small-back-office-primary,
+      accent: $small-back-office-accent,
+      warn: $small-back-office-warn,
+    ),
+  )
+);
