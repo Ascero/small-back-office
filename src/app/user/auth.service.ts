@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
-import { IToken } from './token.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -28,7 +27,7 @@ export class AuthService {
     this.token = this.tokenSubject.asObservable();
   }
 
-  login(username: string, password: string): Observable<IToken> {
+  login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/api/login_check`, { username, password })
       .pipe(
         map((token) => {

@@ -4,15 +4,25 @@
   background: map-get($primary-accent, color);
   display: flex;
   flex-direction: column;
-  margin: 9.375rem auto;
+  margin: 9.375rem auto 0;
   max-width: 21.875rem;
   padding: 2rem;
   transition: 1s;
   animation: slide 1.5s;
 
+  .logo {
+    margin: 0 auto;
+    max-width: 40%;
+
+    img {
+      width: 100%;
+    }
+  }
+
   h1 {
     color: map-get($primary, color);
     font-weight: bold;
+    text-align: center;
   }
 
   .contact-form {
@@ -23,18 +33,31 @@
       margin-bottom: 1rem;
 
       mat-form-field {
+        margin-bottom: .25rem;
         width: 100%;
       }
     }
   }
 
-  @include media-max-width(xs) {
-    max-width: 85%;
+  @include media-max-width(sm) {
+    max-width: 75%;
   }
 
   @keyframes slide {
     0% {
       margin: -18.75rem auto;
     }
+  }
+}
+
+.credentials-error-message {
+  color: map-get($error, color);
+  border-radius: 10px;
+  margin: 0.25rem auto 0;
+  text-align: center;
+  max-width: 21.875rem;
+
+  @include media-max-width(sm) {
+    max-width: 50%;
   }
 }

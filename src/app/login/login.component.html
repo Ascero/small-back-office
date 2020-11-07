@@ -1,4 +1,7 @@
 <mat-card class="login-section">
+  <a class="logo">
+    <img alt="Small BO Logo" src="/assets/logo.svg" />
+  </a>
   <h1>Login to your account</h1>
   <form class="contact-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="user-data">
@@ -23,7 +26,7 @@
         />
         <mat-label>Password</mat-label>
         <mat-hint align="end">Please fill with you password.</mat-hint>
-        <mat-error> Your company name is required. </mat-error>
+        <mat-error> Your password is required. </mat-error>
       </mat-form-field>
     </div>
     <button
@@ -36,9 +39,10 @@
     </button>
   </form>
 </mat-card>
+<div class="credentials-error-message" *ngIf="error !== '' && loading === false">{{ error }}</div>
 <ng-template #loader>
   <span class="loader">
-    <mat-spinner diameter="32"></mat-spinner>
+    <mat-spinner diameter="36"></mat-spinner>
   </span>
 </ng-template>
 

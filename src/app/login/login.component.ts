@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { RedirectService } from '../core/redirect.service';
 
+import { RedirectService } from '../core/redirect.service';
 import { AuthService } from '../user/auth.service';
 
 @Component({
@@ -40,7 +40,10 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-    this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
+    this.authService.login(
+        this.loginForm.controls.username.value,
+        this.loginForm.controls.password.value,
+      )
       .pipe(
         first(),
       )
@@ -54,7 +57,6 @@ export class LoginComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
-          // Logica para mostrar que el usuario no es correcto
           this.error = error;
           this.loading = false;
         },
