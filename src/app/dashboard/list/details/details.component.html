@@ -1,0 +1,131 @@
+<section class="details-section" *ngIf="details$ | async as details">
+  <h1>{{ detailsType }}: ID {{ details.id }}</h1>
+  <mat-card>
+    <mat-tab-group>
+
+      <!-- Details Tab -->
+      <!-- When showing Transactions details -->
+      <mat-tab label="Details" *ngIf="detailsType === 'transactions'">
+        <mat-list>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>money</mat-icon>
+              Base Amount:
+            </span>
+            <span> {{ details.baseCurrency }} {{ details.baseAmount | number : '1.2-2' }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>date_range</mat-icon>
+              Created at:
+            </span>
+            <span>{{ details.createdAt | date }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>insert_emoticon</mat-icon>
+              Created by:
+            </span>
+            <span>{{ details.createdBy.username }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>timeline</mat-icon>
+              Exchange Rate:
+            </span>
+            <span>{{ details.exchangeRate | number : '1.2-2' }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>send</mat-icon>
+              Target Amount:
+            </span>
+            <span>{{ details.targetCurrency }}  {{ details.targetAmount | number : '1.2-2' }}</span>
+          </mat-list-item>
+          <mat-list-item *ngIf="details.updatedAt !== null" >
+            <span class="item-title">
+              <mat-icon>update</mat-icon>
+              Updated At:
+            </span>
+            <span>{{ details.updatedAt | date }}</span>
+          </mat-list-item>
+          <mat-list-item *ngIf="details.updatedBy !== null">
+            <span class="item-title">
+              <mat-icon>account_box</mat-icon>
+              Updated By:
+            </span>
+            <span>{{ details.updatedBy }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+
+      <!-- When showing Customers details -->
+      <mat-tab label="Details" *ngIf="detailsType === 'customers'">
+        <mat-list>
+          <mat-list-item>
+            <span class="item-title"><mat-icon>insert_emoticon</mat-icon> Username: </span>
+            <span> {{ details.username }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>location_on</mat-icon>
+              Address:
+            </span>
+            <span>{{ details.address }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title">
+              <mat-icon>perm_identity</mat-icon> Gender:
+            </span>
+            <span>{{ details.gender }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="item-title"><mat-icon>phone</mat-icon> Phone Number: </span>
+            <span>{{ details.phoneNumber }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+
+      <!-- Edit Target Currency Tab with Form only when showing Transactions details -->
+      <mat-tab label="Edit Target Currency" *ngIf="detailsType === 'transactions'">
+        <form *ngIf="!submitted; else success" class="change-currency-form" [formGroup]="changeCurrencyForm" (ngSubmit)="onSubmit(details.id, details.baseAmount)">
+          <h3>Change Target Amount Currency:</h3>
+          <mat-form-field color="primary" appearance="fill">
+            <mat-label>Select new currency</mat-label>
+            <select matNativeControl formControlName="newCurrency" required>
+              <option value="EUR">EUR</option>
+              <option value="USD">USD</option>
+              <option value="PLN">PLN</option>
+              <option value="SEK">SEK</option>
+              <option value="GBP">GBP</option>
+            </select>
+            <mat-hint align="end">Fill with currency code</mat-hint>
+            <mat-error> Currency is required. </mat-error>
+          </mat-form-field>
+          <button
+            color="primary"
+            mat-raised-button
+            [disabled]="loading"
+          >
+            <span>Submit</span>
+          </button>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+    <div class="options">
+      <button
+        (click)="goBack()"
+        color="primary"
+        mat-raised-button ><mat-icon>keyboard_backspace</mat-icon> Go Back</button>
+    </div>
+  </mat-card>
+</section>
+
+<ng-template #success>
+  <!-- Didn't want to spend too much time showing a successful message since there is not too much to display
+  Should be good to let the customer to have access to current transaction request in order to display transaction details. -->
+  <div class="success-message">
+    <mat-icon>done_outline</mat-icon><br>
+    Your changes were successfully done!
+  </div>
+</ng-template>

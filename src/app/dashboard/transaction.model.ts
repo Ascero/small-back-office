@@ -7,6 +7,6 @@ export interface ITransaction {
   exchangeRate: string;
   createdBy: { id: string; username: string; };
   createdAt: string;
-  updatedBy: string;
-  updatedAt: string;
+  updatedBy?: string;
+  updatedAt?: string;
 }
