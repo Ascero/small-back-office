@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // Called when login form is submitted.
   onSubmit(): void {
     if (this.loginForm.invalid) {
       return;

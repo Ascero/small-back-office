@@ -13,6 +13,10 @@ export class UnauthGuard implements CanActivate {
   ) {
   }
 
+  /**
+   * Guard to avoid logged in users to visit logged out pages.
+   * Current pages: Login page.
+   */
   canActivate(): boolean {
     const storedAuth = this.authenticationService.tokenValue;
     if (!!storedAuth) {

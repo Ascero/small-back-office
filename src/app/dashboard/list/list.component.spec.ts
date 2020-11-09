@@ -48,7 +48,7 @@ describe('ListComponent', () => {
   describe('.showDetails()', () => {
     it('should navigate with id',
       fakeAsync(inject([Router], (router: Router) => {
-        const id = 'user-001'
+        const id = 'user-001';
         const spy = spyOn(router, 'navigate');
         component.showDetails(id);
         fixture.detectChanges();

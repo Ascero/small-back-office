@@ -16,6 +16,10 @@ export class AuthTokenInterceptor implements HttpInterceptor {
   ) {
   }
 
+  /**
+   * Interceptor that add the user current session token to
+   * all request done to BE.
+   */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authenticationService.tokenValue;
     if (token) {

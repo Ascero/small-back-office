@@ -23,6 +23,10 @@ export class DashboardService {
   ) {
   }
 
+  /**
+   * Method to retrieve array of data to show depending on request.
+   * @param data transactions or customers
+   */
   getData(data: string): Observable<ITransaction[] | IUser[]> {
     this.currentDataSubject.next(data);
 
@@ -32,6 +36,9 @@ export class DashboardService {
       );
   }
 
+  /**
+   * Method to retrieve specific data to show depending on request.
+   */
   getDetail(data: string): Observable<ITransaction | IUser> {
     return this.http.get<ITransaction | IUser>(`${environment.apiUrl}/api/${data}`)
       .pipe(
@@ -39,6 +46,11 @@ export class DashboardService {
       );
   }
 
+  /**
+   * Method to edit a transaction target currency.
+   * @param transaction Object composed by a transaction ID and baseAmount
+   * @param targetCurrency new currency chosen by customer.
+   */
   editCurrency(transaction, targetCurrency: string): Observable<ITransaction> {
     return this.http.patch<ITransaction>(`${environment.apiUrl}/api/transactions/${transaction.id}`, {
       // Transactions request ask for an integer, but returns with two decimals.

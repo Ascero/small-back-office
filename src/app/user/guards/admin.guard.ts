@@ -21,6 +21,9 @@ export class AdminGuard implements CanActivate {
   ) {
   }
 
+  /**
+   * Guard to show content, only to admin users.
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const storedAuth = this.authenticationService.tokenValue;
 

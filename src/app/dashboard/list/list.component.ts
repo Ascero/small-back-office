@@ -35,6 +35,8 @@ export class ListComponent {
     this.router.navigate([id], { relativeTo: this.route });
   }
 
+  // Columns that  will be displayed depending on the requested data type
+  // E.G: transactions or customers
   private displayColumn(requestedData: string): void {
     switch (requestedData) {
       case 'customers': {

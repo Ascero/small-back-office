@@ -33,8 +33,7 @@ describe('AuthService', () => {
 
         spyOn(http, 'post').and.returnValue(of(response));
 
-        const returned = authService.login(username, password);
-        expect(returned.subscribe).toBeDefined();
+        authService.login(username, password).subscribe();
         expect(http.post).toHaveBeenCalledWith(`${apiUrl}/login_check`, { username, password });
       }));
   });

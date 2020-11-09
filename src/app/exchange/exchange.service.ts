@@ -16,6 +16,12 @@ export class ExchangeService {
   ) {
   }
 
+  /**
+   * Method that post a new transaction done by regular customer.
+   * @param currencyFrom base currency.
+   * @param amount amount of money to exchange.
+   * @param currencyTo target currency.
+   */
   postTransaction(currencyFrom: string, amount: string, currencyTo: string): Observable<ITransaction> {
     return this.http.post<ITransaction>(`${environment.apiUrl}/api/transactions`, {
       // Transactions request ask for an integer, but somehow returns with two decimals.

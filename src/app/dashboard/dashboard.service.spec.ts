@@ -24,7 +24,7 @@ describe('DashboardService', () => {
 
   describe('.getData()', () => {
     it('should call /transactions and return transaction from response',
-      inject([DashboardService,  HttpClient], (service: DashboardService, http: HttpClient) => {
+      inject([DashboardService,  HttpClient], (dashBoardService: DashboardService, http: HttpClient) => {
         const data = 'transactions';
         const response = { id: 'trasnsaction-1'};
 
@@ -32,14 +32,14 @@ describe('DashboardService', () => {
 
         let returned;
 
-        service.getData(data).subscribe(v => returned = v);
+        dashBoardService.getData(data).subscribe(v => returned = v);
         expect(http.get).toHaveBeenCalledWith(`${apiUrl}/${data}`);
         expect(returned).toBe(response);
       })
     );
 
     it('should call /customers and return customers from response',
-      inject([DashboardService,  HttpClient], (service: DashboardService, http: HttpClient) => {
+      inject([DashboardService,  HttpClient], (dashBoardService: DashboardService, http: HttpClient) => {
         const data = 'customers';
         const response = { id: 'user-1'};
 
@@ -47,7 +47,7 @@ describe('DashboardService', () => {
 
         let returned;
 
-        service.getData(data).subscribe(v => returned = v);
+        dashBoardService.getData(data).subscribe(v => returned = v);
         expect(http.get).toHaveBeenCalledWith(`${apiUrl}/${data}`);
         expect(returned).toBe(response);
       })

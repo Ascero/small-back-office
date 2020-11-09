@@ -29,6 +29,7 @@ export class ExchangeComponent implements OnInit  {
     });
   }
 
+  // Called when exchange form is submitted.
   onSubmit(): void {
     this.submitted = false;
 
@@ -58,6 +59,7 @@ export class ExchangeComponent implements OnInit  {
     });
   }
 
+  // Go back to exchange form submission. For a new user transaction.
   showFormAfterSubmit(): void {
     this.exchangeForm.reset();
     this.submitted = false;

@@ -20,6 +20,11 @@ export class AuthGuard implements CanActivate {
   ) {
   }
 
+  /**
+   * Guard to avoid logged in users to visit admin pages.
+   * Also admin users should not visit regular customer pages.
+   * Current pages: Exchange page.
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const storedAuth = this.authenticationService.tokenValue;
     if (!!storedAuth && storedAuth.token && storedAuth.user !== 'admin@msi-pay.com') {

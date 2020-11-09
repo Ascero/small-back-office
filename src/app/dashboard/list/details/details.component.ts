@@ -40,6 +40,7 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  // Called when change target currency form is submitted.
   onSubmit(id: string, baseAmount: string): void {
     this.submitted = false;
 

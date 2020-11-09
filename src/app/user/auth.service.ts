@@ -16,9 +16,14 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   public token: Observable<IToken>;
 
+  // Key where user credentials are stored.
   private tokenKey = 'current-token';
   private tokenSubject: BehaviorSubject<IToken>;
 
+  /**
+   * Value of tokenSubject
+   * An IToken object.
+   */
   public get tokenValue(): IToken {
     return this.tokenSubject.value;
   }
@@ -30,6 +35,11 @@ export class AuthService {
     this.token = this.tokenSubject.asObservable();
   }
 
+  /**
+   * Method that ask for a token using as parameters user credentials.
+   * @param username customer email
+   * @param password customer password
+   */
   login(username: string, password: string): Observable<IToken> {
     return this.http.post<IToken>(`${environment.apiUrl}/api/login_check`, { username, password })
       .pipe(
@@ -42,6 +52,9 @@ export class AuthService {
       );
   }
 
+  /**
+   * Removes token and user from local storage and navigates to login page.
+   */
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     this.tokenSubject.next(null);
