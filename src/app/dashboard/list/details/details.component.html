@@ -1,5 +1,5 @@
 <section class="details-section" *ngIf="details$ | async as details">
-  <h1>{{ detailsType }}: ID {{ details.id }}</h1>
+  <h1>{{ detailsType | titlecase }}: ID {{ details.id }}</h1>
   <mat-card>
     <mat-tab-group>
 

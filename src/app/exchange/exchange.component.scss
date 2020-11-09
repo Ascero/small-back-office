@@ -51,7 +51,7 @@ h1 {
         justify-content: space-between;
 
         mat-form-field {
-          width: 250px;
+          width: 15.625rem;
         }
 
         @include media-max-width(md) {
@@ -106,8 +106,8 @@ h1 {
 
 .exchange-error-message {
   color: map-get($error, color);
-  border-radius: 10px;
-  margin: 0.25rem auto 0;
+  border-radius: .625rem;
+  margin: .25rem auto 0;
   text-align: center;
   max-width: 21.875rem;
 
