@@ -13,6 +13,8 @@ import { SidenavMenuComponent } from './dashboard/sidenav-menu/sidenav-menu.comp
 import { LoginComponent } from './login/login.component';
 import { AuthTokenInterceptor } from './user/auth-token.interceptor';
 import { ListComponent } from './dashboard/list/list.component';
+import { DetailsComponent } from './dashboard/list/details/details.component';
+import { ExchangeComponent } from './exchange/exchange.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ListComponent } from './dashboard/list/list.component';
     DashboardComponent,
     SidenavMenuComponent,
     ListComponent,
+    DetailsComponent,
+    ExchangeComponent,
   ],
   imports: [
     BrowserModule,

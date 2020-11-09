@@ -1,0 +1,95 @@
+<mat-toolbar>
+  <div class="top-bar-wrapper">
+    <a class="logo" routerLink="/exchange">
+      <img alt="Small BO Logo" src="/assets/logo.svg" />
+    </a>
+    <button (click)="logout()" color="primary" mat-raised-button>Logout</button>
+  </div>
+</mat-toolbar>
+
+<!-- Mat card with form to Post Transaction -->
+<div class="content-wrapper">
+  <h1>Exchange money online!</h1>
+  <mat-card class="form-card">
+    <form
+      *ngIf="!submitted; else success"
+      class="transaction-form"
+      [formGroup]="exchangeForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <p class="message">
+        Fill the following fields with the right info to easily exchange money to
+        supported currencies:
+      </p>
+      <div class="transaction-data">
+        <mat-form-field color="primary" appearance="fill">
+          <mat-label>Exchange from</mat-label>
+          <select matNativeControl formControlName="currency" required>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            <option value="PLN">PLN</option>
+            <option value="SEK">SEK</option>
+            <option value="GBP">GBP</option>
+          </select>
+          <mat-hint align="end">Fill with currency code</mat-hint>
+          <mat-error> Currency is required. </mat-error>
+        </mat-form-field>
+        <mat-icon>add</mat-icon>
+        <mat-form-field color="primary" appearance="fill">
+          <input
+            formControlName="amount"
+            matInput
+            required
+            type="number"
+            step="0"
+          />
+          <mat-label>Amount</mat-label>
+          <mat-hint align="end">
+            Fill with the amount you want to exchange.
+          </mat-hint>
+          <mat-error>The amount is required. Don't use decimals.</mat-error>
+        </mat-form-field>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+        <mat-form-field color="primary" appearance="fill">
+          <mat-label>Exchange to</mat-label>
+          <select matNativeControl formControlName="newCurrency" required>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            <option value="PLN">PLN</option>
+            <option value="SEK">SEK</option>
+            <option value="GBP">GBP</option>
+          </select>
+          <mat-hint align="end">Fill with the desired currency code</mat-hint>
+          <mat-error>Desired currency is required.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="actions">
+        <button color="primary" mat-raised-button [disabled]="loading">
+          <span *ngIf="!loading; else loader">Submit</span>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+  <div class="exchange-error-message" *ngIf="!!error">
+    {{ error }}<br />Please try again.
+  </div>
+</div>
+
+<ng-template #success>
+  <!-- Didn't want to spend too much time showing a successful message since there is not too much to display
+  Should be good to let the customer to have access to current transaction request in order to display transaction details. -->
+  <div class="success-message">
+    <mat-icon>done_outline</mat-icon><br>
+    Your transaction was successfully done!
+    <button
+      (click)="showFormAfterSubmit()"
+      mat-raised-button
+      color="primary"
+    >Do another one!</button>
+  </div>
+</ng-template>
+<ng-template #loader>
+  <span class="loader">
+    <mat-spinner diameter="36"></mat-spinner>
+  </span>
+</ng-template>
