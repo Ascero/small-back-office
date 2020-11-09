@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 import { RedirectService } from '../core/redirect.service';
 import { AuthService } from '../user/auth.service';
@@ -12,10 +11,9 @@ import { AuthService } from '../user/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  error = '';
+  public loginForm: FormGroup;
+  public loading = false;
+  public error = '';
 
   constructor(
     private authService: AuthService,
@@ -32,8 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.submitted = true;
-
     if (this.loginForm.invalid) {
       return;
     }
@@ -44,9 +40,6 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls.username.value,
         this.loginForm.controls.password.value,
       )
-      .pipe(
-        first(),
-      )
       .subscribe({
         next: () => {
           this.router.navigate([
@@ -56,7 +49,6 @@ export class LoginComponent implements OnInit {
           ]);
         },
         error: (error) => {
-          console.log(error);
           this.error = error;
           this.loading = false;
         },
