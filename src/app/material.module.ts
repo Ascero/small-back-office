@@ -7,27 +7,31 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   imports: [
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatInputModule,
     MatFormFieldModule,
+    MatInputModule,
     MatListModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
+    MatTableModule,
   ],
   exports: [
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule,
     MatListModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
+    MatTableModule,
   ]
 })
 export class MaterialModule {}

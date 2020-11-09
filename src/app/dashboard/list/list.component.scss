@@ -1,0 +1,31 @@
+@import "../../scss/variables";
+
+h1 {
+  color: $white;
+}
+
+table {
+  font-weight: 500;
+  width: 100%;
+
+  th {
+    color: map-get($primary, color);
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  td {
+    .dot-base {
+      background-color: rgb(70, 235, 20);
+      border-radius: 50%;
+      display: inline-block;
+      height: .5rem;
+      width: .5rem;
+    }
+
+    .dot-target {
+      @extend .dot-base;
+      background-color: rgb(235, 20, 20);
+    }
+  }
+}
